@@ -1,6 +1,7 @@
 *~
 .*.sw?
 *.log
+*.idea
 *.log.[1-9]
 *.pem
 .localrc.auto
