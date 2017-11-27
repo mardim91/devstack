@@ -17,16 +17,16 @@ Creating a Project(Tenant) and a User in Horizon
     - **Create Project**
         Panels: Identity->Projects
 
-            1. *Create Project*
-            2. Fill the necessary fields
-            3. *Create Project*
+        1. *Create Project*
+        2. Fill the necessary fields
+        3. *Create Project*
 
     - **Create User**
         Panels: Identity -> Users
 
-            1. *Create User*
-            2. Give a name, a password, assign the user to the project you just created, give *member* role and hit *Create User*
-            3. Sign out and log-in with the new user's credentials.
+        1. *Create User*
+        2. Give a name, a password, assign the user to the project you just created, give *member* role and hit *Create User*
+        3. Sign out and log-in with the new user's credentials.
 
 Booting an Instance
 -------------------
@@ -94,7 +94,7 @@ To deploy an instance from Horizon the following steps will be followed:
            this flavor)
         4. Hit *Create Flavor*
 
-        - **Boot an Instance**
+    - **Boot an Instance**
         Panels: Project -> Compute -> Instances
 
         Now that we have all the required components in place we will deploy an instance.
