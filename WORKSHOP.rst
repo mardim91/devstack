@@ -43,6 +43,22 @@ To deploy an instance from Horizon the following steps will be followed:
            the Network Address in a CIDR format(11.11.11.0/24), leave the rest to the default values.
         3. Hit *Create*
 
+    - **Create a Router**
+        Panels: Project -> Network -> Routers
+
+        1. *Create Router*
+        2. Type in the name of the router
+        3. Select the external network from the dropdown list.
+        4. Hit *Create Router*
+
+    - **Attach Private Network's Interface to the Router**
+        Panels: Project -> Network -> Routers -> (Click the name of the router we just created) -> Interfaces Tab
+
+        1. *Add Interface*
+        2. Select the subnet we just created
+        3. Leave the rest to the default values
+        4. Hit *Submit*
+
     - **Allocate a Floating IP**
         Panels: Project -> Network -> Floating IPs
 
@@ -85,10 +101,10 @@ To deploy an instance from Horizon the following steps will be followed:
 
         1. *Create Flavor*
         2. Flavor Tab:
-           Name -> <name of the flavor>
-           VCPUs -> 1
-           RAM -> 512 MB
-           Root Disk -> 1 GB
+           Name -> <name of the flavor>,
+           VCPUs -> 1,
+           RAM -> 512 MB,
+           Root Disk -> 1 GB,
            Leave the rest to the default values
         3. Flavor Access Tab: Leave the default values(We are going to give access to all the projects to
            this flavor)
@@ -108,6 +124,31 @@ To deploy an instance from Horizon the following steps will be followed:
         6. Leave the rest to the default values.
         7. Hit *Launch Instance*
 
+Assign Floating IP and SSH
+__________________________
+
+In this step we are gonna assign the already allocated Floating IP to the Instance. As a subsequent step we are
+going SSH to that Instance from host.
+
+    - *Assign Floating IP to Instance*
+       Panels: Project -> Compute -> Instances
+
+       1. In the same line that we have the name of the instance we hit the arrow to make the dropdown menu to appear.
+       2. We hit *Associate Floating IP*
+       3. At the appeared Form we hit the *IP address* field and we choose the available floating IP.
+       4. Hit *Associate*
+
+    - *SSH to the Instance*
+       After we associated the floating IP we are going back to the host VM and we are gonna try SSH to the Openstack Instance.
+
+       .. code-block:: console
+
+        ssh cirros@<Floating IP>
+
+        pass cubswin:)
+
+    Of course there is a more convenient way to access Instance's console. We can use the VNC console from the Horizon Dashboard.
+    To do so we click on the Instance name and after that we click on the Console Tab.
 
 
 
