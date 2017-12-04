@@ -195,8 +195,8 @@ and create and write a file inside the mounted folder
 
       1. ssh cirros@<Floating IP> (If you are not already associated
          a Floating Ip to the instance please do it now.)
-      2.
-        .. code-block:: console
+      2. .. code-block:: console
+
           $ sudo mkfs.ext4 /dev/<name of the new volume>
           $ sudo mkdir -p /mnt/volume
           $ sudo mount /dev/<name of the new volume> /mnt/volume
@@ -232,8 +232,8 @@ we created with the HEAT component at the section ``Deploy an Instance through H
 
       1. ssh cirros@<Floating IP> (If you are not already associated
          a Floating Ip to the instance please do it now.)
-      2.
-        .. code-block:: console
+      2. .. code-block:: console
+
           $ sudo mkdir -p /mnt/volume
           $ sudo mount /dev/<name of the new volume> /mnt/volume
           $ sudo cat /mnt/volume/test.txt
