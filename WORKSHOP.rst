@@ -150,7 +150,7 @@ going SSH to that Instance from host.
     Of course there is a more convenient way to access Instance's console. We can use the VNC console from the Horizon Dashboard.
     To do so we click on the Instance name and after that we click on the Console Tab.
 
-Deploy an Instance Through HEAT Component
+Deploy an Instance through HEAT component
 -----------------------------------------
 In this step we are going to deploy an Instance by loading a HEAT template and creating a Stack. The outcome of this
 procedure will be a fully functional instance. All the necessary resources which are needed for the deployment of that
@@ -168,11 +168,79 @@ instance will not be assigned to it by hand as we did in the previous steps but 
     When the Stack creation is complete  go to the Project -> Compute -> Instances panel and you will notice that there is
     a new instance with the name ``server0`` which has been created by Heat component.
 
+Create, Attach and Mount Volume to Instance
+-------------------------------------------
+Here we are going to create and attach a volume (a.k.a Hard drive) to the instance we instantiated
+at the ``Booting an Instance`` section.
 
+    - *Create a Volume*
+       Panels: Project -> Volumes -> Volumes
 
+       1. *Create Volume*
+       2. Fill the required fields where is necessary(Do not change the default values)
+       3. Hit *Create Volume*
 
+    - *Attach the Volume to Instance*
+      Panels: Project -> Compute -> Instances
 
+      1. Locate the Instance in which you are going to attach the new Volume
+      2. Hit the dropdown button to attach the newly created Volume to the Instance
+      3. At the appeared Form select the new Volume
+      4. Hit *Attach Volume*
 
+As a subsequent step we are going to login to the instance, create a filesystem, mount the new Volume to a folder
+and create and write a file inside the mounted folder
 
+    - *SSH to Instance and create the Filesystem*
 
+      1. ssh cirros@<Floating IP> (If you are not already associated
+         a Floating Ip to the instance please do it now.)
+      2.
+        .. code-block:: console
 
+        $ sudo mkfs.ext4 /dev/<name of the new volume>
+        $ sudo mkdir -p /mnt/volume
+        $ sudo mount /dev/<name of the new volume> /mnt/volume
+        $ sudo touch /mnt/volume/test.txt
+        $ sudo vi /mnt/volume/test.txt
+
+      3. Write "Hello World" inside the test.txt file save and exit
+      4. sudo umount /mnt/volume
+      5. Ctrl^D to log-off
+
+Detach and Attach the Volume to a different Instance
+----------------------------------------------------
+In this step we are going to detach the Volume from the previous Instance and attach it to the Instance(server0)
+we created with the HEAT component at the section ``Deploy an Instance through HEAT component``.
+
+    - *Detach the Volume from an Instance*
+      Panels: Project -> Compute -> Instances
+
+      1. Locate the Instance in which you are going to detach the Volume from
+      2. Hit the dropdown button to detach the Volume from the Instance
+      3. At the appeared Form select the Volume
+      4. Hit *Detach Volume*
+
+    - *Attach the Volume to Heat Instance*
+      Panels: Project -> Compute -> Instances
+
+      1. Locate the Instance in which you are going to attach the Volume(server0 instance)
+      2. Hit the dropdown button to attach the Volume to the Instance
+      3. At the appeared Form select the new Volume
+      4. Hit *Attach Volume*
+
+    - *SSH to Heat Instance and mount the Volume*
+
+      1. ssh cirros@<Floating IP> (If you are not already associated
+         a Floating Ip to the instance please do it now.)
+      2.
+        .. code-block:: console
+
+        $ sudo mkdir -p /mnt/volume
+        $ sudo mount /dev/<name of the new volume> /mnt/volume
+        $ sudo cat /mnt/volume/test.txt
+
+      3. In this step you should see the "Hello World" message which you wrote in
+         the section ``Create, Attach and Mount Volume to Instance``
+      4. sudo umount /mnt/volume
+      5. Ctrl^D to log-off
