@@ -150,6 +150,49 @@ going SSH to that Instance from host.
     Of course there is a more convenient way to access Instance's console. We can use the VNC console from the Horizon Dashboard.
     To do so we click on the Instance name and after that we click on the Console Tab.
 
+Deploy an Instance Through HEAT Component
+-----------------------------------------
+In this step we are going to deploy an Instance by loading a HEAT template and creating a Stack. The outcome of this
+procedure will be a fully functional instance. All the necessary resources which are needed for the deployment of that
+instance will be not assigned to it by hand as we did at the previous steps but will be assigned automatically by the HEAT component.
+
+    - *Create the Stack*
+       Panels: Project -> Orchestration -> Stacks
+       1. *Launch Stack*
+       2. Template Source -> Direct Input
+       3. Copy and Paste the following yaml formatted lines:
+
+        .. code-block:: yaml
+
+            heat_template_version: 2013-05-23
+
+            description: Hot Template to deploy a single server
+
+            parameters:
+            Image Name:
+                type: string
+                description: Image Name
+            Net Name:
+                type: string
+                description: Private Network Name
+
+            resources:
+            server_0:
+              type: OS::Nova::Server
+              properties:
+                name: "server0"
+                image: { get_param: Image Name }
+                flavor: "m1.tiny"
+                networks:
+                - network: { get_param: Net Name }
+
+            outputs:
+              server0_ip:
+                description: IP of the server
+                value: { get_attr: [ server_0, first_address ] }
+
+
+
 
 
 
