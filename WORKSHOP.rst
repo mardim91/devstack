@@ -197,12 +197,11 @@ and create and write a file inside the mounted folder
          a Floating Ip to the instance please do it now.)
       2.
         .. code-block:: console
-
-        $ sudo mkfs.ext4 /dev/<name of the new volume>
-        $ sudo mkdir -p /mnt/volume
-        $ sudo mount /dev/<name of the new volume> /mnt/volume
-        $ sudo touch /mnt/volume/test.txt
-        $ sudo vi /mnt/volume/test.txt
+          $ sudo mkfs.ext4 /dev/<name of the new volume>
+          $ sudo mkdir -p /mnt/volume
+          $ sudo mount /dev/<name of the new volume> /mnt/volume
+          $ sudo touch /mnt/volume/test.txt
+          $ sudo vi /mnt/volume/test.txt
 
       3. Write "Hello World" inside the test.txt file save and exit
       4. sudo umount /mnt/volume
@@ -235,10 +234,9 @@ we created with the HEAT component at the section ``Deploy an Instance through H
          a Floating Ip to the instance please do it now.)
       2.
         .. code-block:: console
-
-        $ sudo mkdir -p /mnt/volume
-        $ sudo mount /dev/<name of the new volume> /mnt/volume
-        $ sudo cat /mnt/volume/test.txt
+          $ sudo mkdir -p /mnt/volume
+          $ sudo mount /dev/<name of the new volume> /mnt/volume
+          $ sudo cat /mnt/volume/test.txt
 
       3. In this step you should see the "Hello World" message which you wrote in
          the section ``Create, Attach and Mount Volume to Instance``
