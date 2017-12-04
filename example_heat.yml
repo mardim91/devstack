@@ -1,0 +1,26 @@
+heat_template_version: 2013-05-23
+
+description: Hot Template to deploy a single server
+
+parameters:
+  Image Name:
+    type: string
+    description: Image Name
+  Net Name:
+    type: string
+    description: Private Network Name
+
+resources:
+  server_0:
+    type: OS::Nova::Server
+    properties:
+      name: "server0"
+      image: { get_param: Image Name }
+      flavor: "m1.tiny"
+      networks:
+      - network: { get_param: Net Name }
+
+outputs:
+  server0_ip:
+    description: IP of the server
+    value: { get_attr: [ server_0, first_address ] }

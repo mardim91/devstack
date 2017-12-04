@@ -154,42 +154,18 @@ Deploy an Instance Through HEAT Component
 -----------------------------------------
 In this step we are going to deploy an Instance by loading a HEAT template and creating a Stack. The outcome of this
 procedure will be a fully functional instance. All the necessary resources which are needed for the deployment of that
-instance will be not assigned to it by hand as we did at the previous steps but will be assigned automatically by the HEAT component.
+instance will not be assigned to it by hand as we did in the previous steps but will be assigned automatically by HEAT component.
 
     - *Create the Stack*
        Panels: Project -> Orchestration -> Stacks
        1. *Launch Stack*
        2. Template Source -> Direct Input
-       3. Copy and Paste the following yaml formatted lines:
+       3. Copy and Paste the content of the example_heat.yml file
+       4. Fill al the required fields
+       5. Hit *Launch*
 
-        .. code-block:: yaml
-
-            heat_template_version: 2013-05-23
-
-            description: Hot Template to deploy a single server
-
-            parameters:
-            Image Name:
-                type: string
-                description: Image Name
-            Net Name:
-                type: string
-                description: Private Network Name
-
-            resources:
-            server_0:
-              type: OS::Nova::Server
-              properties:
-                name: "server0"
-                image: { get_param: Image Name }
-                flavor: "m1.tiny"
-                networks:
-                - network: { get_param: Net Name }
-
-            outputs:
-              server0_ip:
-                description: IP of the server
-                value: { get_attr: [ server_0, first_address ] }
+    When the Stack creation is complete  go to the Project -> Compute -> Instances panel and you will notice that there is
+    a new instance with the name ``server0`` which has been created by Heat component.
 
 
 
