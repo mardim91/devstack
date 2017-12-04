@@ -158,6 +158,7 @@ instance will not be assigned to it by hand as we did in the previous steps but 
 
     - *Create the Stack*
        Panels: Project -> Orchestration -> Stacks
+
        1. *Launch Stack*
        2. Template Source -> Direct Input
        3. Copy and Paste the content of the example_heat.yml file
