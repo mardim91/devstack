@@ -192,7 +192,6 @@ As a subsequent step we are going to login to the instance, create a filesystem,
 and create and write a file inside the mounted folder
 
     - *SSH to Instance and create the Filesystem*
-
        1. ssh cirros@<Floating IP> (If you are not already associated
           a Floating Ip to the instance please do it now.)
        2. .. code-block:: console
@@ -232,7 +231,6 @@ we created with the HEAT component at the section ``Deploy an Instance through H
        4. Hit *Attach Volume*
 
     - *SSH to Heat Instance and mount the Volume*
-
        1. ssh cirros@<Floating IP> (If you are not already associated
           a Floating Ip to the instance please do it now.)
        2. .. code-block:: console
